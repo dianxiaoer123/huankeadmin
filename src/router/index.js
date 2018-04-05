@@ -46,21 +46,29 @@ export default new Router({
 
 export const asyncRouterMap = [
   {
-    path: '/extend/menu',
+    path: '/device',
     component: Layout,
-    icon: 'table',
-    meta: { role: ['admin'] },
-    noDropdown: true,
-    children: [{ path: 'index', component: _import('extend/menu/index'), name: '菜单管理', meta: { role: ['admin'] }}]
+    name: '设备管理',
+    meta: {
+      title: '设备管理',
+      icon: 'component'
+    },
+    children: [
+      { path: 'deviceList', component: _import('extend/content/index'), name: '设备列表', meta: { title: '设备列表' }},
+      { path: 'deviceType', component: _import('extend/content/index'), name: '设备类型管理', meta: { title: '设备类型管理' }}
+    ]
   },
   {
-    path: '/extend/content',
+    path: '/project',
     component: Layout,
-    icon: 'table',
-    redirect: '/extend/content',
-    meta: { role: ['admin'] },
-    noDropdown: true,
-    children: [{ path: 'index', component: _import('extend/content/index'), name: '网站内容管理' }]
+    name: '工程管理',
+    meta: {
+      title: '工程管理',
+      icon: 'component'
+    },
+    children: [
+      { path: 'projectList', component: _import('extend/content/index'), name: '工程列表', meta: { title: '工程列表' }}
+    ]
   },
   { path: '*', redirect: '/404', hidden: true }
 ]
