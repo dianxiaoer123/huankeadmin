@@ -1,12 +1,12 @@
 <template>
   <div class="app-container calendar-list-container">
     <div class="filter-container">
-      <el-input @keyup.enter.native="handleFilter" style="width: 200px;" class="filter-item" v-model="listQuery.menuName">
+      <el-input @keyup.enter.native="handleFilter" style="width: 200px;" class="filter-item" v-model="listQuery.name">
       </el-input>
 
       <el-button class="filter-item" type="primary" v-waves icon="el-icon-search" @click="handleFilter">查询</el-button>
       <el-button class="filter-item" style="margin-left: 10px;" @click="handleCreate" type="primary"
-                 icon="el-icon-edit">创建
+                 icon="el-icon-edit">创建项目
       </el-button>
     </div>
 
@@ -19,16 +19,6 @@
         </template>
       </el-table-column>
 
-      <el-table-column min-width="200px" label="菜单名称">
-        <template scope="scope">
-          <span>{{scope.row.menuName}}</span>
-        </template>
-      </el-table-column>
-      <el-table-column min-width="200px" label="上级菜单名">
-        <template scope="scope">
-          <span>{{scope.row.menuParentName}}</span>
-        </template>
-      </el-table-column>
       <el-table-column min-width="100px" label="排序号">
         <template scope="scope">
           <span>{{scope.row.sort}}</span>
@@ -44,19 +34,8 @@
     <el-dialog :title="textMap[dialogStatus]" :visible.sync="dialogFormVisible">
       <el-form class="small-space" :model="temp" label-position="left" label-width="70px"
                style='width: 400px; margin-left:50px;'>
-        <el-form-item label="菜单名称">
+        <el-form-item label="项目名称">
           <el-input v-model="temp.menuName"></el-input>
-        </el-form-item>
-
-        <el-form-item label="排序号">
-          <el-input v-model="temp.sort"></el-input>
-        </el-form-item>
-
-        <el-form-item label="上级菜单">
-          <el-select   class="filter-item" filterable  v-model="temp.parentId" placeholder="请选择">
-            <el-option v-for="item in  parentMenuList" :key="item.id" :label="item.menuName" :value="item.id">
-            </el-option>
-          </el-select>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
