@@ -54,8 +54,8 @@ export const asyncRouterMap = [
       icon: 'component'
     },
     children: [
-      { path: 'deviceList', component: _import('extend/content/index'), name: '设备列表', meta: { title: '设备列表' }},
-      { path: 'deviceType', component: _import('extend/content/index'), name: '设备类型管理', meta: { title: '设备类型管理' }}
+      { path: 'deviceList', component: _import('extend/device/index'), name: '设备列表', meta: { title: '设备列表' }},
+      { path: 'deviceType', component: _import('extend/device/index'), name: '设备类型管理', meta: { title: '设备类型管理' }}
     ]
   },
   {

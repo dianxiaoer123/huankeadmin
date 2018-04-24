@@ -105,10 +105,10 @@
     methods: {
       getList() {
         this.listLoading = true
-        queryDeviceList(this.listQuery).then(response => {
+        queryDeviceCount(this.listQuery).then(response => {
           this.total = response.data.data
         })
-        queryDeviceCount(this.listQuery).then(response => {
+        queryDeviceList(this.listQuery).then(response => {
           this.list = response.data.data
           this.listLoading = false
         })
