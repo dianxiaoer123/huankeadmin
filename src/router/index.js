@@ -48,7 +48,7 @@ export const asyncRouterMap = [
   {
     path: '/data',
     component: Layout,
-    name: 'data',
+    name: '数据分析',
     meta: {
       title: '数据分析',
       icon: 'component'
@@ -63,20 +63,7 @@ export const asyncRouterMap = [
   {
     path: '/device',
     component: Layout,
-    name: 'device',
-    meta: {
-      title: '设备管理',
-      icon: 'component'
-    },
-    children: [
-      { path: 'deviceList', component: _import('extend/device/index'), name: '设备列表', meta: { title: '设备列表' }},
-      { path: 'deviceMap', component: _import('extend/empty'), name: '设备地图展示', meta: { title: '设备地图展示' }}
-    ]
-  },
-  {
-    path: '/device',
-    component: Layout,
-    name: 'device',
+    name: '设备管理',
     meta: {
       title: '设备管理',
       icon: 'component'
@@ -90,14 +77,14 @@ export const asyncRouterMap = [
   {
     path: '/sale',
     component: Layout,
-    name: 'sale',
+    name: '售后管理',
     meta: {
       title: '售后管理',
       icon: 'component'
     },
     children: [
       { path: 'alarm', component: _import('extend/empty'), name: '告警设备列表', meta: { title: '告警设备列表' }},
-      { path: 'alarmLevel', component: _import('extend/empty'), name: '告警级别管理', meta: { title: '告警级别管理' }},
+      { path: 'alarmLevel', component: _import('extend/empty'), name: '告警级别管理', meta: { title: '告警级别管理' }}
     ]
   },
   {
@@ -116,21 +103,6 @@ export const asyncRouterMap = [
     ]
   },
   {
-    path: '/order',
-    component: Layout,
-    name: '订单中心',
-    meta: {
-      title: '订单中心',
-      icon: 'component'
-    },
-    children: [
-      { path: 'saleOrder', component: _import('extend/empty'), name: '租赁订单列表', meta: { title: '租赁订单列表' }},
-      { path: 'projectList5', component: _import('extend/empty'), name: '租赁充值列表', meta: { title: '租赁充值列表' }},
-      { path: 'projectList6', component: _import('extend/empty'), name: '分销订单', meta: { title: '分销订单' }},
-      { path: 'projectList7', component: _import('extend/empty'), name: '售后订单', meta: { title: '售后订单' }}
-    ]
-  },
-  {
     path: '/profit',
     component: Layout,
     name: '分润管理',
@@ -143,7 +115,7 @@ export const asyncRouterMap = [
       { path: 'projectList1', component: _import('extend/empty'), name: '售后分润订单', meta: { title: '售后分润订单' }},
       { path: 'projectList2', component: _import('extend/empty'), name: '分销分润订单', meta: { title: '分销分润订单' }},
       { path: 'projectList3', component: _import('extend/empty'), name: '售后订单', meta: { title: '售后分润订单' }},
-      { path: 'projectList4', component: _import('extend/empty'), name: '售后订单', meta: { title: '售后分润账单' }},
+      { path: 'projectList4', component: _import('extend/empty'), name: '售后订单', meta: { title: '售后分润账单' }}
     ]
   },
   {
@@ -167,7 +139,9 @@ export const asyncRouterMap = [
       icon: 'component'
     },
     children: [
-
+      { path: 'appuser', component: _import('extend/empty'), name: '客户管理', meta: { title: '客户管理' }},
+      { path: 'role', component: _import('extend/empty'), name: '角色管理', meta: { title: '角色管理' }},
+      { path: 'systemuser', component: _import('extend/empty'), name: '系统用户', meta: { title: '系统用户' }}
     ]
   },
   { path: '*', redirect: '/404', hidden: true }

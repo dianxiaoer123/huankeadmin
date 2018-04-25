@@ -402,28 +402,6 @@
         console.log('关闭对话框')
       },
       updateData() {
-        const tempData = Object.assign({}, this.temp)
-        updateContent(tempData).then(() => {
-          this.handleFilter()
-          this.dialogFormVisible = false
-          this.$refs.detailImage1.clearFiles()
-          this.$refs.detailImage2.clearFiles()
-          this.$refs.detailImage3.clearFiles()
-          this.$refs.detailImage4.clearFiles()
-          this.$refs.detailImage5.clearFiles()
-          this.$refs.funcImage1.clearFiles()
-          this.$refs.funcImage2.clearFiles()
-          this.$refs.funcImage3.clearFiles()
-          this.$refs.funcImage4.clearFiles()
-          this.$refs.funcImage5.clearFiles()
-          this.$refs.indexImage.clearFiles()
-          this.$notify({
-            title: '成功',
-            message: '更新成功',
-            type: 'success',
-            duration: 2000
-          })
-        })
       }
     }
   }

@@ -3,7 +3,7 @@
     <div class="filter-container">
       <el-input @keyup.enter.native="handleFilter" style="width: 200px;" class="filter-item" v-model="listQuery.mac">
       </el-input>
-
+      <el-button class="filter-item" type="primary" v-waves icon="el-icon-search" @click="handleFilter">查询</el-button>
     </div>
 
     <el-table :data="list" v-loading="listLoading" element-loading-text="加载中" border fit highlight-current-row
@@ -37,7 +37,7 @@
       </el-table-column>
       <el-table-column align="left" label="操作">
         <template scope="scope">
-          <el-button size="small" type="success" @click="updateData(scope.row.id)">编辑
+          <el-button size="small" type="success" @click="handleUpdate(scope.row)">编辑
           </el-button>
         </template>
       </el-table-column>
@@ -45,7 +45,10 @@
     <el-dialog :title="textMap[dialogStatus]" :visible.sync="dialogFormVisible">
       <el-form class="small-space" :model="temp" label-position="left" label-width="70px"
                style='width: 400px; margin-left:50px;'>
-        <el-form-item label="设备名称">
+        <el-form-item label="mac地址:">
+         <span>{{temp.mac}}</span>
+        </el-form-item>
+        <el-form-item label="设备名称:">
           <el-input v-model="temp.name"></el-input>
         </el-form-item>
 
@@ -67,7 +70,7 @@
 </template>
 
 <script>
-  import { queryDeviceList, queryDeviceCount } from '@/api/device'
+  import { queryDeviceList, queryDeviceCount, updateDevice } from '@/api/device'
   import waves from '@/directive/waves' // 水波纹指令
 
   export default {
@@ -139,8 +142,25 @@
       createData() {
       },
       handleUpdate(row) {
+        this.temp = {
+          id: row.id,
+          mac: row.mac,
+          name: row.name
+        }
+        this.dialogStatus = 'update'
+        this.dialogFormVisible = true
       },
       updateData() {
+        const tempData = Object.assign({}, this.temp)
+        updateDevice(tempData).then(() => {
+          this.handleFilter()
+          this.$notify({
+            title: '成功',
+            message: '更新成功',
+            type: 'success',
+            duration: 2000
+          })
+        })
       }
     }
   }
